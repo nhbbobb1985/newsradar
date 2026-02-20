@@ -41,7 +41,7 @@ app:
 # ===============================================================
 schedule:
   enabled: true                         # 是否启用调度系统
-  preset: "morning_evening"             # 预设模板名称（见上方说明）
+  preset: "night_owl"             # 预设模板名称（见上方说明）
 
 
 # ===============================================================
@@ -57,14 +57,8 @@ platforms:
   sources:
     - id: "wallstreetcn-hot"
       name: "华尔街见闻"
-    - id: "thepaper"
-      name: "澎湃新闻"
     - id: "cls-hot"
       name: "财联社热门"
-    - id: "douyin"
-      name: "抖音"
-    - id: "zhihu"
-      name: "知乎"
 
 
 
@@ -92,7 +86,7 @@ rss:
   freshness_filter:
     enabled: true                     # 是否启用新鲜度过滤（默认启用）
 
-    max_age_days: 3                   # 最大文章年龄（天）
+    max_age_days: 7                   # 最大文章年龄（天）
                                       # - 正整数：只推送 N 天内的文章
                                       # - 0：禁用过滤，推送所有文章
 
@@ -101,19 +95,36 @@ rss:
   # - 正整数：覆盖全局设置，只推送此天数内的文章
   # - 0：禁用此频道的新鲜度过滤，推送所有文章
   feeds:
-    - id: "ruanyifeng"
-      name: "阮一峰的网络日志"
-      url: "http://www.ruanyifeng.com/blog/atom.xml"
-
-    - id: "yahoo-finance"
-      name: "雅虎财经"
-      url: "https://finance.yahoo.com/news/rssindex"
-      enabled: false
-
     - id: "bing"
       name: "必应"
       url: "https://www.bing.com/news/search?q=全球新闻&format=RSS"
       max_age_days: 5
+
+    - id: "xg"
+      name: "香港"
+      url: "https://feeds.hongkongnews.net/rss/b82693edf38ebff8"
+      max_age_days: 3
+
+    - id: "nhzb"
+      name: "南华"
+      url: "https://www.scmp.com/rss/91/feed/"
+
+    - id: "fastcompany"
+      name: "快公司"
+      url: "http://www.fastcodesign.com/rss.xml"
+      max_age_days: 5
+
+    - id: "verg"
+      name: "verge"
+      url: "http://www.theverge.com/rss/full.xml"
+      max_age_days: 6
+
+
+
+
+
+
+
 
 
 
@@ -193,7 +204,7 @@ display:
     standalone: false # 独立展示区（完整热榜/RSS，不受关键词过滤）
   standalone:
     platforms: ["wallstreetcn-hot","cls-hot","weibo","douyin"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
-    rss_feeds: ["bing"] # RSS 源 ID 列表（如 ["hacker-news"]）
+    rss_feeds: ["jjrb","xg","bing","nhzb"] # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 20                     # 每个源最多展示条数（0=不限制）
 
 
@@ -348,7 +359,7 @@ ai:
   temperature: 1.0                  # 采样温度 (0.0-2.0)
                                     # 注意：部分模型(如 gpt-5)可能要求必须为 1.0，否则会报错
   
-  max_tokens: 8000                  # 最大生成 token 数
+  max_tokens: 5000                  # 最大生成 token 数
                                     # 注意：如果 API 不支持此参数(报 HTTP 400)，请设为 0 以禁用发送
   # 高级选项
   num_retries: 1                    # 失败重试次数
