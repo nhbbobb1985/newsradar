@@ -108,17 +108,21 @@ rss:
     - id: "hacker-news"
       name: "Hacker News"
       url: "https://hnrss.org/frontpage"
-      # max_age_days: 1               # 示例：只推送1天内的文章
 
     - id: "ruanyifeng"
       name: "阮一峰的网络日志"
       url: "http://www.ruanyifeng.com/blog/atom.xml"
-      # max_age_days: 7               # 示例：推送7天内的文章（更新较慢的博客）
-    
+
     - id: "yahoo-finance"
       name: "雅虎财经"
       url: "https://finance.yahoo.com/news/rssindex"
-      enabled: false                  # 禁用
+      enabled: false
+
+    - id: "bing"
+      name: "必应"
+      url: "https://www.bing.com/news/search?q=全球新闻&format=RSS"
+      max_age_days: 5
+
 
     # 自定义源示例
     # - id: "custom-feed"
@@ -196,7 +200,7 @@ display:
     standalone: false # 独立展示区（完整热榜/RSS，不受关键词过滤）
   standalone:
     platforms: ["zhihu","wallstreetcn-hot","cls-hot","douyin","weibo"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
-    rss_feeds: ["yahoo-finance"] # RSS 源 ID 列表（如 ["hacker-news"]）
+    rss_feeds: ["ruanyifeng","bing"] # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 20                     # 每个源最多展示条数（0=不限制）
 
 
