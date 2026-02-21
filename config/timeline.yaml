@@ -315,12 +315,13 @@ presets:
         name: "午后速览"
         start: "15:00"
         end: "17:00"
-        analyze: true              # AI 分析当前热点
+        analyze: false              # AI 分析当前热点
         ai_mode: "current"         # AI 分析当前榜单
-        push: true                 # 午后看当前热点
+        push: false                 # 午后看当前热点
         report_mode: "current"     # 当前在榜的新闻
         # once 继承 default（analyze: true, push: true）→ 只推/分析一次
 
+        collect: false
       late_night:
         name: "深夜汇总"
         start: "22:00"
@@ -471,7 +472,7 @@ custom:
   # 把上面定义的时间段组合成一天的安排。
   # 你可以定义多个日计划（如 workday 和 weekend），
   # 然后在第 3 步的 week_map 中分配给不同的星期。
-  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   day_plans:
     workday:                       # 工作日计划
       periods: ["deep_quiet", "weekday_morning", "evening_summary"]
