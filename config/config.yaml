@@ -84,7 +84,7 @@ rss:
   #    - 所有文章都会存入数据库（MCP Server 的 AI 查询仍可访问）
   #    - 只有新鲜的文章会被推送到通知渠道
   freshness_filter:
-    enabled: true                     # 是否启用新鲜度过滤（默认启用）
+    enabled: false                     # 是否启用新鲜度过滤（默认启用）
 
     max_age_days: 7                   # 最大文章年龄（天）
                                       # - 正整数：只推送 N 天内的文章
@@ -100,15 +100,6 @@ rss:
       url: "https://www.bing.com/news/search?q=全球新闻&format=RSS"
       max_age_days: 5
 
-    - id: "xg"
-      name: "香港"
-      url: "https://feeds.hongkongnews.net/rss/b82693edf38ebff8"
-      max_age_days: 3
-
-    - id: "nhzb"
-      name: "南华"
-      url: "https://www.scmp.com/rss/91/feed/"
-
     - id: "fastcompany"
       name: "快公司"
       url: "http://www.fastcodesign.com/rss.xml"
@@ -118,6 +109,8 @@ rss:
       name: "verge"
       url: "http://www.theverge.com/rss/full.xml"
       max_age_days: 6
+
+
 
 
 
@@ -200,7 +193,7 @@ display:
     ai_analysis: true # AI 分析区域
     new_items: true # 新增热点区域（含热榜新增 + RSS 新增）
     hotlist: true # 热榜区域（关键词匹配的热点新闻）
-    rss: true # RSS 订阅区域
+    rss: false # RSS 订阅区域
     standalone: false # 独立展示区（完整热榜/RSS，不受关键词过滤）
   standalone:
     platforms: ["wallstreetcn-hot","cls-hot","weibo","douyin"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
@@ -317,7 +310,6 @@ storage:
   pull:
     enabled: false                    # 是否启用启动时自动拉取
     days: 7                           # 拉取最近 N 天的数据
-
 
 # ===============================================================
 # 8. AI 模型配置（共享）
